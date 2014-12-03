@@ -155,10 +155,10 @@ function LEIA_setBackgroundPlane(filename, aspect){
 	
   //
     var planeMaterial = new THREE.MeshPhongMaterial( {map: foregroundPlaneTexture, color: 0xffdd99 } );
-    var LEIA_backgroundPlaneGeometry = new THREE.PlaneGeometry(80, 60, 10, 10);
-	LEIA_backgroundPlane = new THREE.Mesh(LEIA_backgroundPlaneGeometry,   planeMaterial);
-	LEIA_backgroundPlane.position.z = -6;
-	LEIA_backgroundPlane.castShadow = false;
-	LEIA_backgroundPlane.receiveShadow = true;
-	scene.add(LEIA_backgroundPlane);
+    var planeGeometry = new THREE.PlaneGeometry(80, 60, 10, 10);
+	plane = new THREE.Mesh(planeGeometry,   planeMaterial);
+	plane.position.z = -6;
+	plane.castShadow = false;
+	plane.receiveShadow = true;
+	scene.add(plane);
 }
