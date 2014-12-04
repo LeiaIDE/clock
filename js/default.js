@@ -9,7 +9,7 @@ var g_hour = 0;
 var g_minute = 0;
 var g_AMPM = "AM";
 var material = new THREE.MeshFaceMaterial( [ 
-  new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
+   new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.FlatShading } ), // front
   new THREE.MeshPhongMaterial( { color: 0xffffff, shading: THREE.SmoothShading } ) // side
 ] );
 var MeshHH,GeoMM,GeoAM;
