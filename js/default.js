@@ -21,7 +21,7 @@ var bInitTimeObject = false;
  };
 
 function Init(){
-        scene = new THREE.Scene();
+    scene = new THREE.Scene();
         group = new THREE.Object3D();
   
        //setup camera
