@@ -196,7 +196,7 @@ function addLights() {
     light.position.set(0, 60, 60);
     light.shadowCameraVisible = false;
     light.castShadow = true;
-    light.shadowMapWidth = light.shadowMapHeight = 512;
+    light.shadowMapWidth = light.shadowMapHeight = 256;
     light.shadowDarkness = 0.7;
     scene.add(light);
 
