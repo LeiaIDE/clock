@@ -9,16 +9,7 @@ var lf3 = f;
 var g_hour = 0;
 var g_minute = 0;
 var g_AMPM = "AM";
-var material = new THREE.MeshFaceMaterial([
-    new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        shading: THREE.FlatShading
-    }), // front
-    new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        shading: THREE.SmoothShading
-    }) // side
-]);
+var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
 window.onload = function() {
@@ -185,6 +176,16 @@ function UpateTimeObject() {
 
 function addObjectsToScene() {
     //Add your objects here
+    material = new THREE.MeshFaceMaterial([
+    new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        shading: THREE.FlatShading
+    }), // front
+    new THREE.MeshPhongMaterial({
+        color: 0xffffff,
+        shading: THREE.SmoothShading
+    }) // side
+]);
     UpateTimeObject();
     LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
 }
