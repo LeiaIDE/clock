@@ -107,7 +107,7 @@ function UpateTimeObject() {
         weight: "normal",
         style: "normal",
         bevelThickness: 0.5,
-        bevelSize: 0.25,
+        bevelSize: 0.5,
         bevelEnabled: true,
         material: 0,
         extrudeMaterial: 1
@@ -179,14 +179,15 @@ function UpateTimeObject() {
 }
 
 function addObjectsToScene() {
-    //Add your objects here
+  colstr = rgbstr(255,255,255);  
+  //Add your objects here
     material = new THREE.MeshFaceMaterial([
     new THREE.MeshPhongMaterial({
-        color: 0xffffff,
+        color: colstr,
         shading: THREE.FlatShading
     }), // front
     new THREE.MeshPhongMaterial({
-        color: 0xffffff,
+        color: colstr,
         shading: THREE.SmoothShading
     }) // side
 ]);
@@ -225,4 +226,10 @@ function LEIA_setBackgroundPlane(filename, aspect) {
     plane.castShadow = false;
     plane.receiveShadow = true;
     scene.add(plane);
+}
+
+//Function to convert hex format to a rgb color
+function rgbstr(r,g,b){
+ return 'rgb(' + r + ',' + g + ',' + b + ')';
+  
 }
