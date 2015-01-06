@@ -12,11 +12,11 @@ var g_AMPM = "AM";
 var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
- head.ready(function() {
+head.ready(function() {
     console.log("onload");
     Init();
     animate();
- });
+});
 
 function Init() {
     scene = new THREE.Scene();
@@ -38,10 +38,10 @@ function Init() {
         devicePixelRatio: 1
     });
     renderer.Leia_setSize({
-                          width: windowWidth,
-                         height:windowHeight,
-                         autoFit:true
-                        });
+        width: windowWidth,
+        height: windowHeight,
+        autoFit: true
+    });
     renderer.shadowMapEnabled = true;
     renderer.shadowMapSoft = true;
     document.body.appendChild(renderer.domElement);
@@ -67,7 +67,7 @@ function animate() {
         UpateTimeObject();
     }
 
-    group.rotation.z = 0.6 * 0.6*Math.sin(3.0*LEIA.time);;
+    group.rotation.z = 0.6 * 0.6 * Math.sin(3.0 * LEIA.time);;
     renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
     renderer.Leia_render({
         scene: scene,
@@ -75,7 +75,7 @@ function animate() {
         holoScreenSize: _holoScreenSize,
         holoCamFov: _camFov,
         upclip: _up,
-        downclip:  _down,
+        downclip: _down,
         messageFlag: _messageFlag
     });
 }
@@ -179,18 +179,18 @@ function UpateTimeObject() {
 }
 
 function addObjectsToScene() {
-  colstr = rgbstr(255,255,255);  
-  //Add your objects here
+    colstr = rgbstr(255, 255, 255);
+    //Add your objects here
     material = new THREE.MeshFaceMaterial([
-    new THREE.MeshPhongMaterial({
-        color: colstr,
-        shading: THREE.FlatShading
-    }), // front
-    new THREE.MeshPhongMaterial({
-        color: colstr,
-        shading: THREE.SmoothShading
-    }) // side
-]);
+        new THREE.MeshPhongMaterial({
+            color: colstr,
+            shading: THREE.FlatShading
+        }), // front
+        new THREE.MeshPhongMaterial({
+            color: colstr,
+            shading: THREE.SmoothShading
+        }) // side
+    ]);
     UpateTimeObject();
     LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
 }
@@ -229,7 +229,7 @@ function LEIA_setBackgroundPlane(filename, aspect) {
 }
 
 //Function to convert hex format to a rgb color
-function rgbstr(r,g,b){
- return 'rgb(' + r + ',' + g + ',' + b + ')';
-  
+function rgbstr(r, g, b) {
+    return 'rgb(' + r + ',' + g + ',' + b + ')';
+
 }
