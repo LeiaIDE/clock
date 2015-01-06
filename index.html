@@ -3,7 +3,7 @@
 <head>  
   <meta charset="utf-8">
   <title>holodev</title>
-  <script src="js/three.min.js"></script>      
+ 
   <script>
     var _renderMode = 'TuningPanelOn';
     var _nShaderMode = "basic";
@@ -16,6 +16,10 @@
     var _up = 25.74;
     var _down = -20.48;		       
   </script>
+    <script src="js/head.load.min.js"></script>
+    <script>
+        head.load("js/three.min.js", "js/LeiaCore-0.0.17.min.js","js/helvetiker_bold.typeface.js","js/helvetiker_regular.typeface.js");
+    </script>
   <style type="text/css">
     body {
       overflow: hidden;
@@ -29,11 +33,6 @@
   <div id="roll" style="display: none;">0</div>
 </body>
 
-<!--add library here-->
-
-<script src="js/helvetiker_bold.typeface.js"></script>
-<script src="js/helvetiker_regular.typeface.js"></script> 
-<script src="js/LeiaCore-0.0.17.min.js"></script>     
 <script src="js/default.js"></script>
 
 </html>
