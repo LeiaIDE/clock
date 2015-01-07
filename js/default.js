@@ -125,7 +125,7 @@ function UpateTimeObject() {
         weight: "normal",
         style: "normal",
         bevelThickness: 0.5,
-        bevelSize: 0.25,
+        bevelSize: 0.5,
         bevelEnabled: true,
         material: 0,
         extrudeMaterial: 1
