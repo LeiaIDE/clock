@@ -67,8 +67,8 @@ function animate() {
         UpateTimeObject();
     }
 
-    group.rotation.x = 0.8 * Math.sin(5.0 * LEIA.time);;
-    group.rotation.z = 0.6 * 0.6 * Math.sin(3.0 * LEIA.time);;
+    group.rotation.x = 0.8 * Math.sin(5.0 * LEIA.time);
+    group.rotation.z = 0.6 * 0.6 * Math.sin(3.0 * LEIA.time);
     renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
     renderer.Leia_render({
         scene: scene,
