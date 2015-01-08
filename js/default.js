@@ -41,7 +41,7 @@ function Init() {
     renderer.Leia_setSize({
         width: windowWidth,
         height: windowHeight,
-        autoFit: false
+        autoFit: true
     });
   
     renderer.shadowMapEnabled = true;
