@@ -187,7 +187,16 @@ function addObjectsToScene() {
         }) // side
     ]);
     UpateTimeObject();
-    LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
+    // LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
+    var backgroundPlane = Leia_createTexturePlane({
+        filename: 'resource/brickwall_900x600_small.jpg',
+        width: 80,
+        height: 60
+    });
+    backgroundPlane.position.z = -6;
+    backgroundPlane.castShadow = false;
+    backgroundPlane.receiveShadow = true;
+    scene.add(backgroundPlane);
 }
 
 function addLights() {
@@ -203,24 +212,6 @@ function addLights() {
 
     var ambientLight = new THREE.AmbientLight(0x222222);
     scene.add(ambientLight);
-}
-
-function LEIA_setBackgroundPlane(filename, aspect) {
-    var foregroundPlaneTexture = new THREE.ImageUtils.loadTexture(filename);
-    foregroundPlaneTexture.wrapS = foregroundPlaneTexture.wrapT = THREE.RepeatWrapping;
-    foregroundPlaneTexture.repeat.set(1, 1);
-
-    //
-    var planeMaterial = new THREE.MeshPhongMaterial({
-        map: foregroundPlaneTexture,
-        color: 0xffdd99
-    });
-    var planeGeometry = new THREE.PlaneGeometry(80, 60, 10, 10);
-    plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.position.z = -6;
-    plane.castShadow = false;
-    plane.receiveShadow = true;
-    scene.add(plane);
 }
 
 //Function to convert hex format to a rgb color
