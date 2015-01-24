@@ -38,7 +38,7 @@ function Init() {
 
     renderer.shadowMapEnabled = true;
     renderer.shadowMapSoft = true;
-    Leia_addRender(renderer);
+    Leia_addRender(renderer,{bFPSVisible:true});
 
     //add object to Scene
     addObjectsToScene();
@@ -63,7 +63,7 @@ function animate() {
 
     group.rotation.x = 0.8 * Math.sin(5.0 * LEIA.time);
     group.rotation.z = 0.6 * 0.6 * Math.sin(3.0 * LEIA.time);
-    renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
+  //  renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
     renderer.Leia_render({
         scene: scene,
         camera: camera,
