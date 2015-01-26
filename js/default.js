@@ -68,9 +68,6 @@ function animate() {
         scene: scene,
         camera: camera,
         holoScreenSize: _holoScreenSize,
-        holoCamFov: _camFov,
-        upclip: _up,
-        downclip: _down,
         messageFlag: _messageFlag
     });
 }
