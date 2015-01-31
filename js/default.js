@@ -11,7 +11,6 @@ var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
 head.ready(function() {
-    console.log("onload");
     Init();
     animate();
 });
