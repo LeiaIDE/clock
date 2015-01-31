@@ -39,7 +39,7 @@ function Init() {
     });
     renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
     renderer.shadowMapEnabled = true;
-    renderer.shadowMapType = THREE.BasicShadowMap;
+  //  renderer.shadowMapType = THREE.BasicShadowMap;
     Leia_addRender(renderer,{bFPSVisible:true});
 
     //add object to Scene
