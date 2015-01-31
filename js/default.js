@@ -21,9 +21,9 @@ function Init() {
     group = new THREE.Object3D();
 
     //setup camera
-    camera = new LeiaCamera({
-        cameraPosition: new THREE.Vector3(_camPosition.x, _camPosition.y, _camPosition.z),
-        targetPosition: new THREE.Vector3(_tarPosition.x, _tarPosition.y, _tarPosition.z)
+    camera = new LeiaCamera({   dCtoZDP:_ZDPDistanceToCamera,
+        zdpNormal:new THREE.Vector3(_ZDPNormal.x, _ZDPNormal.y, _ZDPNormal.z),
+        targetPosition: new THREE.Vector3(_ZDPCenter.x, _ZDPCenter.y, _ZDPCenter.z)
     });
     scene.add(camera);
 
@@ -31,9 +31,11 @@ function Init() {
     renderer = new LeiaWebGLRenderer({
         antialias: true,
         renderMode: _renderMode,
-        shaderMode: _nShaderMode,
         colorMode: _colorMode,
-        devicePixelRatio: 1
+        devicePixelRatio: 1,
+        ZDPSize: _ZDPSize,
+        tunedsp:_maxDisparity,
+        messageFlag: _targetEnvironment
     });
     renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
     renderer.shadowMapEnabled = true;
@@ -66,10 +68,7 @@ function animate() {
   //  
     renderer.Leia_render({
         scene: scene,
-        camera: camera,
-        holoScreenSize: _holoScreenSize,
-        tunedsp:_maxDisparity,
-        messageFlag: _messageFlag
+        camera: camera
     });
 }
 
