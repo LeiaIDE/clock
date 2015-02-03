@@ -1,9 +1,5 @@
 var camera, renderer, scene;
 var group;
-var f = "helvetiker";
-var lf1 = f;
-var lf2 = f;
-var lf3 = f;
 var g_hour = 0;
 var g_minute = 0;
 var g_AMPM = "AM";
@@ -94,7 +90,7 @@ function UpateTimeObject() {
         size: 12,
         height: 2,
         curveSegments: 4,
-        font: lf1,
+        font: "helvetiker",
         weight: "normal",
         style: "normal",
         bevelThickness: 0.5,
@@ -111,7 +107,7 @@ function UpateTimeObject() {
         size: 6,
         height: 2,
         curveSegments: 4,
-        font: lf2,
+        font: "helvetiker",
         weight: "normal",
         style: "normal",
         bevelThickness: 0.5,
@@ -129,7 +125,7 @@ function UpateTimeObject() {
         size: 3,
         height: 2,
         curveSegments: 4,
-        font: lf3,
+        font: "helvetiker",
         weight: "normal",
         style: "normal",
         bevelThickness: 0.6,
