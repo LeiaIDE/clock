@@ -6,10 +6,10 @@ var g_AMPM = "AM";
 var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
-head.ready(function() {
+window.onload = function() {
     Init();
     animate();
-});
+};
 
 function Init() {
     scene = new THREE.Scene();
