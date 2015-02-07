@@ -12,15 +12,15 @@ window.onload = function () {
 };
 
 function Init() {
+  LEIA.virtualScreen.Init();
   scene = new THREE.Scene();
   group = new THREE.Object3D();
 
   //setup camera
   camera = new LeiaCamera({
-    dCtoZDP: _ZDPDistanceToCamera,
-    zdpNormal: new THREE.Vector3(_ZDPNormal.x, _ZDPNormal.y, _ZDPNormal.z),
-    targetPosition: new THREE.Vector3(_ZDPCenter.x, _ZDPCenter.y,
-      _ZDPCenter.z)
+    dCtoZDP: LEIA.virtualScreen.d,
+    zdpNormal: LEIA.virtualScreen.normal,
+    targetPosition: LEIA.virtualScreen.center
   });
   scene.add(camera);
 
@@ -30,8 +30,6 @@ function Init() {
     renderMode: _renderMode,
     colorMode: _colorMode,
     devicePixelRatio: 1,
-    ZDPSize: _ZDPSize,
-    tunedsp: _maxDisparity,
     messageFlag: _targetEnvironment
   });
   renderer.setClearColor(new THREE.Color()
