@@ -13,6 +13,36 @@ window.onload = function () {
   });
 };
 
+
+// the LeapMotion update function
+Leap.loop( {enableGestures: true}, function( frame ) 
+{   
+    handData = frame.hands[0];
+    if (!(frame.pointables.length==1)) {
+
+        // mesh.position.set(0,-2,1);
+        // first finger if exists
+        if ( !handData ) {
+
+            // sphereStatus.isGrabbed = false;
+
+            return;
+
+        } else {
+
+            if( handData.grabStrength == 1 ) {
+
+              setTimeout(
+                  function(){  document.location.href = '../MainMenu/index.html';  },
+                  500
+              );
+            }
+        }
+    }
+
+});
+// end of LeapMotion update
+
 function Init() {
   LEIA.virtualScreen.Init();
  
