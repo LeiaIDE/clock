@@ -7,7 +7,7 @@ var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
 window.onload = function () {
-  LEIA.physicalScreen.InitFromExternalJson('https://s3.amazonaws.com/leiacore/config.json',function(){
+  LEIA.physicalScreen.InitFromExternalJson('leiacore/config.json',function(){
     Init();
     animate();
   });
