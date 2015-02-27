@@ -18,11 +18,11 @@
         var _holoScreenSize = 69.16;
         var _up = 34.58;
         var _down = -34.58;
-//        var _depthCompressionFactor = 0.25;
+        //var _depthCompressionFactor = 0.25;
         //var _depthCompressionFactor = 30;
-        var _depthCompressionFactor = 100;
-//        var _depthCompressionFactor = 2500;
-        //var _depthCompressionFactor = 30000;
+        //var _depthCompressionFactor = 100;
+        //var _depthCompressionFactor = 2500;
+        var _depthCompressionFactor = 30000;
     </script>
     <script src="js/head.load.min.js"></script>
     <script>
@@ -40,13 +40,16 @@
         }
     </style>
 </head>
-
+<!--- add library here --->
+<script src="leiacore/three.min.js"></script>
+<script src="leiacore/LeiaCore-0.0.104.min.js"></script>
+<script src="js/helvetiker_bold.typeface.js"></script>
+<script src="js/helvetiker_regular.typeface.js"></script>
+<script src="js/leap-0.6.4.js"></script>
+<script src="js/default.js"></script>
 <body>
     <div id="yaw" style="display: none;">0</div>
     <div id="pitch" style="display: none;">0</div>
     <div id="roll" style="display: none;">0</div>
 </body>
-<!--add library here-->
-<script src="js/default.js"></script>
-
 </html>
