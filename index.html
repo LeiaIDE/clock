@@ -1,55 +1,49 @@
 <!DOCTYPE html>
 
 <head>
-    <meta charset="utf-8">
-    <title>holodev</title>
-    <script>
-        //var _renderMode = 'TuningPanelOn';
-        var _renderMode = 'SwizzleMode';
-        var _nShaderMode = "basic";
-        var _messageFlag = 'MessageToIDE';
-        var _colorMode = "color"; //"monochrome"
-        var _camFov = 50.00;
-        var _camPosition = {x:0.00,y:0.00,z:300.00};
-        //var _tarPosition = {x:0.00,y:0.00,z:0.58};
-        var _tarPosition = {x:0.00,y:0.00,z:10};
-        var _tarPosition = {x:0.00,y:0.00,z:0.58};
-        //var _tarPosition = {x:0.00,y:0.00,z:20};
-        var _holoScreenSize = 69.16;
-        var _up = 34.58;
-        var _down = -34.58;
-        //var _depthCompressionFactor = 0.25;
-        //var _depthCompressionFactor = 30;
-        //var _depthCompressionFactor = 100;
-        //var _depthCompressionFactor = 2500;
-        var _depthCompressionFactor = 30000;
-    </script>
-    <script src="js/head.load.min.js"></script>
-    <script>
-        head.load(["js/three.min.js",
-            //"leiacore/LeiaCore-latest.min.js",
-            "js/LeiaCore.js",
-            "js/loadSTL2.js",
-            "js/helvetiker_bold.typeface.js",
-            "js/helvetiker_regular.typeface.js"
-        ]);
-    </script>
-    <style type="text/css">
-        body {
-            overflow: hidden;
-        }
-    </style>
+  <meta charset="utf-8">
+  <title>holodev</title>
+  <script>
+    var _renderMode = 'SwizzleMode';
+    var _targetEnvironment = 'IDE';
+    var _colorMode = "color";
+    var _ZDPNormal = {
+      x: 0.00,
+      y: 0.00,
+      z: 1.00
+    };
+    var _ZDPDistanceToCamera = 500.00;
+    var _ZDPCenter = {x:0.00,y:0.00,z:0.00};
+    var _ZDPSize = 40.00;
+
+    var _maxDisparity = 5.00;
+    var _baselineScale = 1.00;
+
+    //read only
+    var _up = 7.39;
+    var _down = -7.62;
+    var _camPosition = {x:0.00,y:0.00,z:500.00};
+
+  </script>
+  <style type="text/css">
+    body {
+      overflow: hidden;
+    }
+
+  </style>
 </head>
 <!--- add library here --->
 <script src="leiacore/three.min.js"></script>
 <script src="leiacore/LeiaCore-0.0.104.min.js"></script>
 <script src="js/helvetiker_bold.typeface.js"></script>
 <script src="js/helvetiker_regular.typeface.js"></script>
-<script src="js/leap-0.6.4.js"></script>
-<script src="js/default.js"></script>
+
 <body>
-    <div id="yaw" style="display: none;">0</div>
-    <div id="pitch" style="display: none;">0</div>
-    <div id="roll" style="display: none;">0</div>
+  <div id="yaw" style="display: none;">0</div>
+  <div id="pitch" style="display: none;">0</div>
+  <div id="roll" style="display: none;">0</div>
+
 </body>
+<script src="js/default.js"></script>
+
 </html>

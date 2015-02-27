@@ -1,6 +1,5 @@
-var windowWidth = window.innerWidth,
-    windowHeight = window.innerHeight;
 var camera, renderer, scene;
+var helloWorld;
 
 var group;
 var f = "helvetiker";
@@ -14,93 +13,71 @@ var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
 
-window.onload = function() {
-    console.log("onload");
+window.onload = function () {
+  LEIA.physicalScreen.InitFromExternalJson('leiacore/config.json',function(){
+    helloWorld = new THREE.Object3D();
     Init();
     animate();
+  });
 };
 
-
-// the LeapMotion update function
-Leap.loop( {enableGestures: true}, function( frame ) 
-{   
-    handData = frame.hands[0];
-    if (!(frame.pointables.length==1)) {
-
-        // mesh.position.set(0,-2,1);
-        // first finger if exists
-        if ( !handData ) {
-
-            // sphereStatus.isGrabbed = false;
-
-            return;
-
-        } else {
-
-            if( handData.grabStrength == 1 ) {
-
-              setTimeout(
-                  function(){  document.location.href = '../MainMenu/index.html';  },
-                  500
-              );
-            }
-        }
-    }
-
-});
-// end of LeapMotion update
-
 function Init() {
-    scene = new THREE.Scene();
-    group = new THREE.Object3D();
 
-material = new THREE.MeshFaceMaterial([
-    new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        shading: THREE.FlatShading
-    }), // front
-    new THREE.MeshPhongMaterial({
-        color: 0xffffff,
-        shading: THREE.SmoothShading
-    }) // side
-]);
-    // camera setup
-    camera = new LeiaCamera({
-        cameraPosition: new THREE.Vector3(_camPosition.x, _camPosition.y, _camPosition.z),
-        targetPosition: new THREE.Vector3(_tarPosition.x, _tarPosition.y, _tarPosition.z)
-    });
-    camera.visible=false;
-    scene.add(camera);
+  LEIA.virtualScreen.Init();
+  //LEIA.virtualScreen.loadDefault();
+  
+  LEIA.virtualScreen.width = 40;
+  LEIA.virtualScreen.center.copy({x:0.00,y:0.00,z:0.00});
+  LEIA.virtualScreen.normal.copy({x:0.00,y:0.00,z:1.00});
+  LEIA.virtualScreen.b = 1.0;
+  LEIA.virtualScreen.d = 500;
+  LEIA.virtualScreen.disp = 5;
+  LEIA.virtualScreen.h = 0;
+  LEIA.physicalScreen.resolution = new THREE.Vector2(200,150);
+  
+  scene = new THREE.Scene();
+  group = new THREE.Object3D();
 
-    // rendering setup
-    renderer = new LeiaWebGLRenderer({
-        antialias: true,
-        renderMode: _renderMode,
-        shaderMode: _nShaderMode,
-        colorMode: _colorMode,
-        compFac: _depthCompressionFactor,
-        devicePixelRatio: 1
-    });
-    renderer.Leia_setSize({
-        width: windowWidth,
-        height: windowHeight,
-        autoFit: true
-    });
-    renderer.shadowMapEnabled = true;
-    renderer.shadowMapSoft = true;
-    document.body.appendChild(renderer.domElement);
+    material = new THREE.MeshFaceMaterial([
+        new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            shading: THREE.FlatShading
+        }), // front
+        new THREE.MeshPhongMaterial({
+            color: 0xffffff,
+            shading: THREE.SmoothShading
+        }) // side
+    ]);
+  
+  // camera setup
+  camera = new LeiaCamera({
+    dCtoZDP: LEIA.virtualScreen.d,
+    zdpNormal: LEIA.virtualScreen.normal,
+    targetPosition: LEIA.virtualScreen.center
+  });
+  scene.add(camera);
 
-    //add object to scene
-    addObjectsToScene();
+  // rendering setup
+  renderer = new LeiaWebGLRenderer({
+    antialias: true,
+    renderMode: _renderMode,
+    colorMode: _colorMode,
+    devicePixelRatio: 1,
+    superSampleSharpen:false,
+    messageFlag: _targetEnvironment
+  });
+  renderer.shadowMapEnabled = true;
+  // renderer.shadowMapType = THREE.BasicShadowMap;
+  Leia_addRender(renderer, {
+    bFPSVisible: true
+  });
 
-    //add Light
-    addLights();
+  //add object to scene
+  addObjectsToScene();
 
+  //add Light
+  addLights();
 }
-
-
-
-
 
 function animate() {
     requestAnimationFrame(animate);
@@ -120,13 +97,11 @@ function animate() {
     //mesh1.position.z = -2
     group.rotation.x = 0.7 * Math.sin(5.0 * Date.now() * 0.001);
     group.rotation.z = 0.6 * Math.sin(3.0 * Date.now() * 0.001);    renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
-    renderer.Leia_render({
-        scene: scene,
-        camera: camera,
-        holoScreenSize: _holoScreenSize,
-        holoCamFov: _camFov,
-        messageFlag: _messageFlag
-    });
+  
+  renderer.Leia_render({
+    scene: scene,
+    camera: camera
+  });
 }
 
 function UpateTimeObject() {
@@ -224,13 +199,12 @@ function UpateTimeObject() {
     group.add(MeshHH);
     group.add(MeshMM);
     group.add(MeshAM);
-group.scale.set(1.5, 1.5, 1.5);
+    group.scale.set(1.5, 1.5, 1.5);
     scene.add(group);
 }
 
 function addObjectsToScene() { // Add your objects here
-    // background Plane
-
+    //background Plane
     UpateTimeObject();
     LEIA_setBackgroundPlane('resource/brickwall_900x600_small.jpg');
 }
