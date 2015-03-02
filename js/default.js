@@ -12,6 +12,10 @@ var g_AMPM = "AM";
 var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
+var isAnimating = true;
+var socket = io(); //Socket server
+
+var KEY = {ESC:27, SPACE:32, LEFT:37, UP:38, RIGHT:39, DOWN:40, SHIFT:16, S:83, A:65, X:88, I:73, J:74, K:75, L:76, B:66};
 
 window.onload = function () {
   LEIA.physicalScreen.InitFromExternalJson('leiacore/config.json',function(){
@@ -77,7 +81,41 @@ function Init() {
 
   //add Light
   addLights();
+
+    addEvents();
 }
+
+function addEvents() {
+    document.addEventListener('keydown', keydown, false);
+    //window.addEventListener('resize', resize, false);
+}
+
+function keydown(ev) {
+    console.log(ev.keyCode);
+    switch (ev.keyCode) {
+        case KEY.B:
+            console.log("Stopping animation");
+            if(isAnimating) { stopAnimation(); } else { startAnimation(); }
+            break;
+    }
+}
+
+function stopAnimation() {
+    isAnimating = false;
+}
+
+function startAnimation() {
+    isAnimating = true;
+}
+
+socket.on('port data', function(msg){
+    console.log(msg);
+    if(isAnimating) {
+        stopAnimation();
+    } else {
+        startAnimation();
+    }
+});
 
 function animate() {
     requestAnimationFrame(animate);
@@ -93,10 +131,15 @@ function animate() {
         UpateTimeObject();
     }
 
-    //mesh1.rotation.set(-Math.PI/2+0.2*Math.sin(3.2*time), 0*Math.PI/2, -Math.PI/2+0.25*Math.sin(4*time));
-    //mesh1.position.z = -2
-    group.rotation.x = 0.7 * Math.sin(5.0 * Date.now() * 0.001);
-    group.rotation.z = 0.6 * Math.sin(3.0 * Date.now() * 0.001);    renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
+    if(isAnimating) {
+        group.rotation.x = 0.7 * Math.sin(5.0 * Date.now() * 0.001);
+        group.rotation.z = 0.6 * Math.sin(3.0 * Date.now() * 0.001);
+    } else {
+        group.rotation.x = group.rotation.x;
+        group.rotation.z = group.rotation.z;
+    }
+
+    renderer.setClearColor(new THREE.Color().setRGB(1.0, 1.0, 1.0));
   
   renderer.Leia_render({
     scene: scene,
