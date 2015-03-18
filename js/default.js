@@ -13,7 +13,6 @@ var material;
 var MeshHH, GeoMM, GeoAM;
 var bInitTimeObject = false;
 var isAnimating = true;
-var socket = io(); //Socket server
 
 var KEY = {ESC:27, SPACE:32, LEFT:37, UP:38, RIGHT:39, DOWN:40, SHIFT:16, S:83, A:65, X:88, I:73, J:74, K:75, L:76, B:66};
 
