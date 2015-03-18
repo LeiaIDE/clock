@@ -99,23 +99,6 @@ function keydown(ev) {
     }
 }
 
-function stopAnimation() {
-    isAnimating = false;
-}
-
-function startAnimation() {
-    isAnimating = true;
-}
-
-socket.on('port data', function(msg){
-    console.log(msg);
-    if(isAnimating) {
-        stopAnimation();
-    } else {
-        startAnimation();
-    }
-});
-
 function animate() {
     requestAnimationFrame(animate);
     var date = new Date(Date.now());
