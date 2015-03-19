@@ -17,7 +17,7 @@ var isAnimating = true;
 var KEY = {ESC:27, SPACE:32, LEFT:37, UP:38, RIGHT:39, DOWN:40, SHIFT:16, S:83, A:65, X:88, I:73, J:74, K:75, L:76, B:66};
 
 window.onload = function () {
-  LEIA.physicalScreen.InitFromExternalJson('leiacore/config.json',function(){
+  LEIA.physicalScreen.InitFromExternalJson('js/config.json',function(){
     helloWorld = new THREE.Object3D();
     Init();
     animate();
