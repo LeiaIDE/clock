@@ -29,12 +29,12 @@ function Init() {
   LEIA.virtualScreen.Init();
   //LEIA.virtualScreen.loadDefault();
   
-  LEIA.virtualScreen.width = 40;
+  LEIA.virtualScreen.width = 60;
   LEIA.virtualScreen.center.copy({x:0.00,y:0.00,z:0.00});
   LEIA.virtualScreen.normal.copy({x:0.00,y:0.00,z:1.00});
   LEIA.virtualScreen.b = 1.0;
   LEIA.virtualScreen.d = 500;
-  LEIA.virtualScreen.disp = 5;
+  LEIA.virtualScreen.disp = 10;
   LEIA.virtualScreen.h = 0;
   LEIA.physicalScreen.resolution = new THREE.Vector2(200,150);
   
